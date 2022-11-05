@@ -5,12 +5,12 @@ import json
 params = {
   'api_key': '6C7B23038BF54E3AAB67F70E03EBBA13',
   'type': 'product',
-  'tcin': '78025470'
+  'dpci': '071180218'
 }
 
 # make the http GET request to RedCircle API
 api_result = requests.get('https://api.redcircleapi.com/request', params)
 
-# print the JSON response from RedCircle API
-print(json.dumps(api_result.json()))
-api_result.json().get("price")
+# print the JSON response for price
+#print(json.dumps(api_result.json()["product"]["buybox_winner"]["price"]["value"]))
+print(api_result.json()["product"]["buybox_winner"]["price"]["value"])
