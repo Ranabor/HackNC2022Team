@@ -3,21 +3,24 @@ import {View, StyleSheet, Text, Button} from 'react-native';
 import colors from './config/colors';
 import {useNavigation} from '@react-navigation/native';
 
+// const Link = () => {
+//   const navigation = useNavigation();
+
+//   return (
+//     <Button
+//       title="Start Test"
+//       color={colors.secondary}
+//       onPress={() => navigation.navigate('EnterID')}
+//     />
+//   );
+// };
+
 const HomeScreen = () => {
-  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Hack NC</Text>
+      <Text style={styles.title}>a</Text>
       <View style={styles.startButtonContainer}>
-        <Link />
-
         <View style={styles.gap}></View>
-
-        <Button
-          title=""
-          color={colors.secondary}
-          onPress={() => navigation.navigate('')}
-        />
       </View>
     </View>
   );
