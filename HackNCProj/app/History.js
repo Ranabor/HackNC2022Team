@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, Button} from 'react-native';
 import colors from './config/colors';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {PieChart, LineChart, Grid} from 'react-native-svg-charts';
 import {LocaleConfig, Calendar} from 'react-native-calendars';
 
 class History extends Component {
@@ -12,15 +12,17 @@ class History extends Component {
     this.state = {
       data: null,
       dateValue: '',
+      values: [],
+      month: '',
     };
   }
 
   componentDidMount() {
     this.dataSetup();
   }
-
+  money = [];
   dataSetup = async () => {
-    await AsyncStorage.setItem('2022-11-05', JSON.stringify('$20'));
+    await AsyncStorage.setItem('2022-11-05', '$20');
     await AsyncStorage.setItem('2022-11-04', '$30');
     await AsyncStorage.setItem('2022-11-03', '$40');
     await AsyncStorage.setItem('2022-11-02', '$10');
@@ -28,10 +30,27 @@ class History extends Component {
   };
 
   retrieveData = async () => {
+    this.setState({values: this.state.dateValue.split('-')});
     this.setState({data: await AsyncStorage.getItem(this.state.dateValue)});
   };
 
   render() {
+    const dataPie = [20, 30, 40, 10, 23];
+    const randomColor = () =>
+      ('#' + ((Math.random() * 0xffffff) << 0).toString(16) + '000000').slice(
+        0,
+        7,
+      );
+    const pieData = dataPie
+      .filter(value => value > 0)
+      .map((value, index) => ({
+        value,
+        svg: {
+          fill: randomColor(),
+          onPress: () => console.log('press', index),
+        },
+        key: `pie-${index}`,
+      }));
     return (
       <View>
         <Calendar
@@ -74,7 +93,9 @@ class History extends Component {
             this.retrieveData();
           }}
           monthFormat={'MMMM yyyy'}
-          onMonthChange={month => {}}
+          onMonthChange={month => {
+            console.log(month);
+          }}
           hideExtraDays={true}
           firstDay={1}
           onPressArrowLeft={subtractMonth => subtractMonth()}
@@ -82,7 +103,11 @@ class History extends Component {
           disableAllTouchEventsForDisabledDays={true}
           enableSwipeMonths={true}
         />
-        <Text>{this.state.data}</Text>
+        <Text>
+          On {this.state.values[2]}/{this.state.values[1]}/
+          {this.state.values[0]} you spent {this.state.data} at Target
+        </Text>
+        <PieChart style={{height: '30%'}} data={pieData} />
       </View>
     );
   }
