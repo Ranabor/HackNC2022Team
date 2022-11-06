@@ -28,7 +28,7 @@ class RecogScreen extends Component {
     this.setState({text: 'Please Upload A Receipt'});
   }
 
-  imageGalleryLaunchCodes = () => {
+  imageGalleryLaunchCodes() {
     let options = {
       storageOptions: {
         skipBackup: true,
@@ -42,10 +42,9 @@ class RecogScreen extends Component {
         this.setState({textCodes: result});
       })();
     });
-    this.checkCompleted();
-  };
+  }
 
-  imageGalleryLaunchPrices = () => {
+  imageGalleryLaunchPrices() {
     let options = {
       storageOptions: {
         skipBackup: true,
@@ -59,18 +58,17 @@ class RecogScreen extends Component {
         this.setState({textPrices: result});
       })();
     });
-    this.checkCompleted();
-  };
+  }
 
-  checkCompleted = () => {
+  componentDidUpdate() {
     if (this.state.textCodes != '' && this.state.textPrices != '') {
       this.setState({showConfirm: true});
     }
-  };
+  }
 
-  getReceiptInfo = () => {
+  getReceiptInfo = async () => {
     this.setState({
-      dictionary: Scanner(this.state.textCodes, this.state.textPrices),
+      dictionary: await Scanner(this.state.textCodes, this.state.textPrices),
     });
   };
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Button, StyleSheet, Text, View, Image} from 'react-native';
 
-const Scanner = async () => {
+const Scanner = async (codes, prices) => {
   codeReader = receiptCodes => {
     tempStr = '';
     dpciList = [];
