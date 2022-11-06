@@ -10,6 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@emotion/core": "^11.0.0",
+    "@emotion/native": "^11.10.0",
     "@react-native-community/blur": "^4.3.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/bottom-tabs": "^6.4.0",
@@ -17,6 +19,7 @@
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/stack": "^6.3.4",
     "babel-preset-react-native": "2.1.0",
+    "emotion-theming": "^11.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
@@ -35,6 +38,7 @@
     "react-router-dom": "^6.4.3",
     "reactstrap": "^9.1.5",
     "rn-text-detector": "^0.0.8",
+    "styled-system": "^5.1.5",
     "tesseract.js": "^3.0.3"
   },
   "devDependencies": {

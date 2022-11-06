@@ -170,13 +170,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
-  }
-  // company: {
-  //   textAlign: 'center',
-  //   alignContent: 'center',
-  //   fontSize: 40,
-  //   fontWeight: '800',
-  // },
+  },
+  company: {
+    textAlign: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+    fontSize: 40,
+    fontWeight: '800',
+  },
   // rate: {
   //   textAlign: 'center',
   //   alignContent: 'center',
