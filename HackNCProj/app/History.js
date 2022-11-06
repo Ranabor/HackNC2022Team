@@ -36,7 +36,8 @@ class History extends Component {
             this.setState({dateValue: dateStuff});
           }}
           onDayLongPress={day => {
-            this.setState({dateValue: day});
+            const dateStuff = day['dateString'];
+            this.setState({dateValue: dateStuff});
           }}
           monthFormat={'MM/yyyy'}
           onMonthChange={month => {
