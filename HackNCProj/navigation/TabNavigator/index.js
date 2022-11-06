@@ -36,11 +36,11 @@ const TabNavigator = () => {
         let iconName;
 
         if (route.name === 'Home') {
-          iconName = focused
-            ? 'ios-information-circle'
-            : 'ios-information-circle-outline';
+          iconName = 'home';
         } else if (route.name === 'Scanner') {
-          iconName = focused ? 'ios-list-box' : 'ios-list';
+          iconName = 'scanner';
+        } else if (route.name === 'History') {
+          iconName = 'calendar-outline';
         }
 
         // You can return any component that you like here!
