@@ -12,7 +12,6 @@ import TextRecognition from 'react-native-text-recognition';
 import ImagePicker, {launchImageLibrary} from 'react-native-image-picker';
 import Scanner from './Scanner';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class RecogScreen extends Component {
   constructor(props) {
