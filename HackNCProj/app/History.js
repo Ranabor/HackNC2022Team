@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {PieChart, LineChart, Grid} from 'react-native-svg-charts';
 import {LocaleConfig, Calendar} from 'react-native-calendars';
+import { background, backgroundColor, styles } from 'styled-system';
 
 class History extends Component {
   constructor(props) {
@@ -103,11 +104,14 @@ class History extends Component {
           disableAllTouchEventsForDisabledDays={true}
           enableSwipeMonths={true}
         />
-        <Text>
-          On {this.state.values[2]}/{this.state.values[1]}/
-          {this.state.values[0]} you spent {this.state.data} at Target
-        </Text>
-        <PieChart style={{height: '30%'}} data={pieData} />
+        <View style = {{backgroundColor: '#444'}}>
+          <Text style = {{color: '#ddd', fontSize: 22}}>
+            On {this.state.values[2]}/{this.state.values[1]}/
+            {this.state.values[0]} you spent {this.state.data} at Target
+          </Text>
+        
+          <PieChart style={{height: '60%', marginTop: 40}} data={pieData} />
+        </View>
       </View>
     );
   }
