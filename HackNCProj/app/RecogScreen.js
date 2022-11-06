@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   titlerow: {
-    flex: 1,
+    flex: 0.5,
     backgroundColor: colors.background,
     flexDirection: 'row',
   },
@@ -212,10 +212,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   outputbox: {
-    backgroundColor: '#aaa',
-    marginRight: 10,
+    backgroundColor: '#eee',
+    alignContent: 'center',
+    marginHorizontal: 10,
     marginBottom: 30,
-    borderRadius: 20,
     flex: 1,
   },
 });
