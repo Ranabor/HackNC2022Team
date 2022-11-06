@@ -99,21 +99,20 @@ class RecogScreen extends Component {
             </View>
           </View>
 
-          <View style={styles.titlerow}>
-            {/* <View style={styles.titlebox}> */}
-              <Text style={styles.title1}>Breakdown</Text>
-              <Text style={styles.title1}>Spending Over Time</Text>
-          </View>
 
-          <View style = {styles.titlerow}>
-            <Text styles = {styles.title1}>
-                Codes:
-                {this.state.textCodes}
+          <View style = {styles.labelrow}>
+            <View style = {styles.outputbox}>
+            <Text style = {styles.title1}>Codes</Text>
+              <Text style = {styles.title1}>
+                  {this.state.textCodes}
               </Text>
-            <Text styles = {styles.title1}>
-              Prices:
-              {this.state.textPrices}
-            </Text>
+            </View>
+            <View style = {styles.outputbox}>
+              <Text style = {styles.title1}>Prices</Text>
+              <Text style = {styles.title1}>
+                {this.state.textPrices}
+              </Text>
+            </View>
           </View>
           
           
@@ -157,10 +156,15 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   titlerow: {
-    flex: 5,
+    flex: 1,
     backgroundColor: colors.background,
     flexDirection: 'row',
     
+  },
+  labelrow: {
+    flex: 3,
+    backgroundColor: colors.background,
+    flexDirection: 'row',
   },
   dualrow: {
     flex: 1,
@@ -193,10 +197,10 @@ const styles = StyleSheet.create({
     flex: 20,
   },
   title1: {
-    textAlign: 'left',
+    textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#bbb',
+    color: '#333',
     flex: 1,
 
   },
@@ -207,7 +211,7 @@ const styles = StyleSheet.create({
     color: '#bbb',
   },
   bufferrow: {
-    flex: 5,
+    flex: 1,
   },
   button: {
     flex: 1,
@@ -216,4 +220,11 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignSelf: 'center',
   },
+  outputbox: {
+    backgroundColor: '#aaa',
+    marginRight: 10,
+    marginBottom: 30,
+    borderRadius: 20,
+    flex: 1,
+  }
 });
