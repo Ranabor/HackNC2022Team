@@ -11,6 +11,7 @@ import {useNavigation, NavigationContainer} from '@react-navigation/native';
 import TextRecognition from 'react-native-text-recognition';
 import ImagePicker, {launchImageLibrary} from 'react-native-image-picker';
 import Scanner from './Scanner';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class RecogScreen extends Component {
@@ -70,33 +71,7 @@ class RecogScreen extends Component {
   }
 
   getReceiptInfo = async () => {
-    function codeReader(receiptCodes) {
-      tempStr = '';
-      const dpciList = [];
-      returnValue = false;
-      for (let i = 0; i == receiptCodes.length; i++) {
-        if (i == receiptCodes.length) {
-          returnValue == true;
-        }
-        char = receiptCodes.substring(i);
-        console.log(char);
-        if (isNaN(char) == false) {
-          tempStr += char;
-          if (tempStr.length == 9) {
-            dpciList.push(tempStr);
-            tempStr = '';
-          }
-        } else {
-          tempStr = '';
-        }
-      }
-      if (returnValue == true) {
-        return dpciList;
-      }
-    }
-    const result = await codeReader('057101346086134358');
-    console.log(result);
-
+    await AsyncStorage.setItem('prices');
     this.setState({dictionary: result});
   };
 
