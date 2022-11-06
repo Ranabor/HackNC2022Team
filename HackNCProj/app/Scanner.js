@@ -18,7 +18,7 @@ const Scanner = async (codes, prices) => {
     }
     return dpciList;
   };
-  codeReader('057101346086134358');
+  return codeReader('057101346086134358');
 };
 
 export default Scanner;

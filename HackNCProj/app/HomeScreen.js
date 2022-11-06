@@ -78,11 +78,11 @@ const HomeScreen = () => {
 
       <View style={styles.dualrow}>
         <View style={styles.box}>
-          <PieChart style={{height: 100}} data={pieData} />
+          <PieChart style={{height: '100%'}} data={pieData} />
         </View>
         <View style={styles.box}>
           <LineChart
-            style={{height: 100}}
+            style={{height: '90%'}}
             data={dataLine}
             svg={{stroke: 'green'}}
             contentInset={{top: 20, bottom: 0}}>
