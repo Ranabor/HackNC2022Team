@@ -110,7 +110,11 @@ class RecogScreen extends Component {
         </View>
 
         {this.state.showConfirm && (
-          <Button title="Confirm" onPress={() => this.getReceiptInfo()} />
+          <Button
+            style={{borderRadius: 5}}
+            title="Confirm"
+            onPress={() => this.getReceiptInfo()}
+          />
         )}
       </View>
     );
@@ -210,6 +214,7 @@ const styles = StyleSheet.create({
     height: 50,
     alignContent: 'center',
     alignSelf: 'center',
+    borderRadius: 5,
   },
   outputbox: {
     backgroundColor: '#eee',
