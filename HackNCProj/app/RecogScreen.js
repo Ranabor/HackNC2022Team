@@ -24,6 +24,7 @@ class RecogScreen extends Component {
       showConfirm: true,
       dictionary: 'here',
       updateLimit: true,
+      sum: 0,
     };
   }
   componentDidMount() {
@@ -63,6 +64,7 @@ class RecogScreen extends Component {
   }
 
   componentDidUpdate() {
+    const a = [1, 2];
     if (this.state.updateLimit == true)
       if (this.state.textCodes != '' && this.state.textPrices != '') {
         this.setState({showConfirm: true});
@@ -71,15 +73,15 @@ class RecogScreen extends Component {
   }
 
   getReceiptInfo = async () => {
-    await AsyncStorage.setItem('prices');
-    this.setState({dictionary: result});
+    await AsyncStorage.setItem('prices', JSON.stringify([109.99, 8.01, 20.5]));
+    this.setState({dictionary: await AsyncStorage.getItem('prices')});
   };
 
   render() {
     return (
       <View>
         <View>
-          <Text>{this.state.dictionary}</Text>
+          <Text>{this.state.sum}</Text>
           {this.state.showConfirm && (
             <Button title="Confirm" onPress={() => this.getReceiptInfo()} />
           )}
