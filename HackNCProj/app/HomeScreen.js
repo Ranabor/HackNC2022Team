@@ -53,7 +53,7 @@ const HomeScreen = () => {
           <Text style={styles.company}>Target</Text>
         </View>
         <View style={styles.box}>
-          <Text style={styles.changes}>+2.34</Text>
+          <Text style={styles.changes}>+2.34%</Text>
         </View>
       </View>
 
@@ -69,7 +69,7 @@ const HomeScreen = () => {
 
       <View style={styles.titlerow}>
         <View style={styles.titlebox}>
-          <Text style={styles.title1}>Shopping Breakdown</Text>
+          <Text style={styles.title1}>Breakdown</Text>
         </View>
         <View style={styles.titlebox}>
           <Text style={styles.title1}>Spending Over Time</Text>
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   changes: {
     textAlignVertical: 'center',
     textAlign: 'center',
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: '800',
     margin: 10,
     flex: 1,
