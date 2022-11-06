@@ -80,9 +80,7 @@ class RecogScreen extends Component {
       <View>
         <View>
           <Text>{this.state.sum}</Text>
-          {this.state.showConfirm && (
-            <Button title="Confirm" onPress={() => this.getReceiptInfo()} />
-          )}
+          
           <Button
             title="Upload Photo Of Codes"
             onPress={() => this.imageGalleryLaunchCodes()}
@@ -99,6 +97,9 @@ class RecogScreen extends Component {
             Prices:
             {this.state.textPrices}
           </Text>
+          {this.state.showConfirm && (
+            <Button title="Confirm" onPress={() => this.getReceiptInfo()} />
+          )}
         </View>
       </View>
     );

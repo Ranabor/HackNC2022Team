@@ -38,6 +38,7 @@ const HomeScreen = () => {
     }));
 
   return (
+    
     <View style={styles.container1}>
       <View style={styles.titlerow}>
         <View style={styles.titlebox}>
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
     flex: 5,
     backgroundColor: colors.background,
     flexDirection: 'row',
+    
   },
   dualrow: {
     flex: 20,
@@ -148,15 +150,20 @@ const styles = StyleSheet.create({
   },
   bigrow: {
     flex: 30,
-    backgroundColor: '#abdbe3',
     borderRadius: 30,
     margin: 10,
+    borderColor: '#26619c',
+    backgroundColor: '#454545',
+    borderWidth: 3,
   },
   box: {
     borderRadius: 30,
     flex: 50,
-    backgroundColor: '#abdbe3',
     margin: 10,
+    padding: 5,
+    borderColor: '#26619c',
+    backgroundColor: '#454545',
+    borderWidth: 3,
   },
   titlebox: {
     backgroundColor: colors.background,
@@ -169,11 +176,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#bbb',
   },
   title2: {
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#bbb',
   },
   company: {
     textAlignVertical: 'center',
@@ -182,6 +191,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     margin: 10,
     flex: 1,
+    color: '#bbb',
   },
   changes: {
     textAlignVertical: 'center',
@@ -199,6 +209,8 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     margin: 10,
     flex: 1,
+    color: '#bbb',
+    
   },
   // rate: {
   //   textAlign: 'center',
