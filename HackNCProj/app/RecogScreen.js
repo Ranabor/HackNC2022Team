@@ -6,6 +6,7 @@ import {
   View,
   Image,
   PermissionsAndroid,
+  ScrollView,
 } from 'react-native';
 import {useNavigation, NavigationContainer} from '@react-navigation/native';
 import TextRecognition from 'react-native-text-recognition';
@@ -78,48 +79,40 @@ class RecogScreen extends Component {
 
   render() {
     return (
-      <View style = {styles.container1}>
-          <Text>{this.state.sum}</Text>
-          <View style = {styles.titlerow} >
-            <Text style = {styles.title}>UPLOAD</Text>
-          </View>
-
-          <View style = {styles.dualrow}>
-            <View style = {styles.button}>
-              <Button
-                title="Codes" 
-                onPress={() => this.imageGalleryLaunchCodes()}
-              />
-            </View>
-            <View style = {styles.button}>
-              <Button
-                title="Prices"
-                onPress={() => this.imageGalleryLaunchPrices()}
-              />
-            </View>
-          </View>
-
-
-          <View style = {styles.labelrow}>
-            <View style = {styles.outputbox}>
-            <Text style = {styles.title1}>Codes</Text>
-              <Text style = {styles.title1}>
-                  {this.state.textCodes}
-              </Text>
-            </View>
-            <View style = {styles.outputbox}>
-              <Text style = {styles.title1}>Prices</Text>
-              <Text style = {styles.title1}>
-                {this.state.textPrices}
-              </Text>
-            </View>
-          </View>
-          
-          
-          {this.state.showConfirm && (
-            <Button title="Confirm" onPress={() => this.getReceiptInfo()} />
-          )}
+      <View style={styles.container1}>
+        <Text>{this.state.sum}</Text>
+        <View style={styles.titlerow}>
+          <Text style={styles.title}>UPLOAD</Text>
         </View>
+
+        <View style={styles.dualrow}>
+          <View style={styles.button}>
+            <Button
+              title="Codes"
+              onPress={() => this.imageGalleryLaunchCodes()}
+            />
+          </View>
+          <View style={styles.button}>
+            <Button
+              title="Prices"
+              onPress={() => this.imageGalleryLaunchPrices()}
+            />
+          </View>
+        </View>
+
+        <View style={styles.labelrow}>
+          <ScrollView style={styles.outputbox}>
+            <Text style={styles.title1}>{this.state.textCodes}</Text>
+          </ScrollView>
+          <ScrollView style={styles.outputbox}>
+            <Text style={styles.title1}>{this.state.textPrices}</Text>
+          </ScrollView>
+        </View>
+
+        {this.state.showConfirm && (
+          <Button title="Confirm" onPress={() => this.getReceiptInfo()} />
+        )}
+      </View>
     );
   }
 }
@@ -159,7 +152,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     flexDirection: 'row',
-    
   },
   labelrow: {
     flex: 3,
@@ -202,7 +194,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     flex: 1,
-
   },
   title2: {
     textAlign: 'center',
@@ -215,7 +206,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    margin : 5,
+    margin: 5,
     height: 50,
     alignContent: 'center',
     alignSelf: 'center',
@@ -226,5 +217,5 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     borderRadius: 20,
     flex: 1,
-  }
+  },
 });
