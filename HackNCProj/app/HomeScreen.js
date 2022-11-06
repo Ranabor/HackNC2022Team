@@ -38,7 +38,6 @@ const HomeScreen = () => {
     }));
 
   return (
-    
     <View style={styles.container1}>
       <View style={styles.titlerow}>
         <View style={styles.titlebox}>
@@ -141,7 +140,6 @@ const styles = StyleSheet.create({
     flex: 5,
     backgroundColor: colors.background,
     flexDirection: 'row',
-    
   },
   dualrow: {
     flex: 20,
@@ -210,7 +208,6 @@ const styles = StyleSheet.create({
     margin: 10,
     flex: 1,
     color: '#bbb',
-    
   },
   // rate: {
   //   textAlign: 'center',
