@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -36,7 +37,6 @@ import {
 // import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 // import { FaHome, FaCalendar} from 'react-icons/fa';
 // import { IoMdQrScanner } from 'react-icons/io';
-
 
 // function Home() {
 //   return (
@@ -114,8 +114,6 @@ import {
 //   );
 // }
 
-
-
 import RootNavigator from './navigation/RootNavigator';
 
 export default function FirstApp() {
@@ -125,5 +123,4 @@ export default function FirstApp() {
       <RootNavigator />
     </>
   );
-};
-
+}
