@@ -11,6 +11,7 @@ import {useNavigation, NavigationContainer} from '@react-navigation/native';
 import TextRecognition from 'react-native-text-recognition';
 import ImagePicker, {launchImageLibrary} from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import colors from './config/colors';
 
 class RecogScreen extends Component {
   constructor(props) {
@@ -77,33 +78,142 @@ class RecogScreen extends Component {
 
   render() {
     return (
-      <View>
-        <View>
+      <View style = {styles.container1}>
           <Text>{this.state.sum}</Text>
+          <View style = {styles.titlerow} >
+            <Text style = {styles.title}>UPLOAD</Text>
+          </View>
+
+          <View style = {styles.dualrow}>
+            <View style = {styles.button}>
+              <Button
+                title="Codes" 
+                onPress={() => this.imageGalleryLaunchCodes()}
+              />
+            </View>
+            <View style = {styles.button}>
+              <Button
+                title="Prices"
+                onPress={() => this.imageGalleryLaunchPrices()}
+              />
+            </View>
+          </View>
+
+          <View style={styles.titlerow}>
+            {/* <View style={styles.titlebox}> */}
+              <Text style={styles.title1}>Breakdown</Text>
+              <Text style={styles.title1}>Spending Over Time</Text>
+          </View>
+
+          <View style = {styles.titlerow}>
+            <Text styles = {styles.title1}>
+                Codes:
+                {this.state.textCodes}
+              </Text>
+            <Text styles = {styles.title1}>
+              Prices:
+              {this.state.textPrices}
+            </Text>
+          </View>
           
-          <Button
-            title="Upload Photo Of Codes"
-            onPress={() => this.imageGalleryLaunchCodes()}
-          />
-          <Text>
-            Codes:
-            {this.state.textCodes}
-          </Text>
-          <Button
-            title="Upload Photo Of Prices"
-            onPress={() => this.imageGalleryLaunchPrices()}
-          />
-          <Text>
-            Prices:
-            {this.state.textPrices}
-          </Text>
+          
           {this.state.showConfirm && (
             <Button title="Confirm" onPress={() => this.getReceiptInfo()} />
           )}
         </View>
-      </View>
     );
   }
 }
 
 export default RecogScreen;
+
+const styles = StyleSheet.create({
+  container1: {
+    flex: 1,
+    backgroundColor: colors.background,
+    justifyContent: 'center',
+    flexDirection: 'column',
+    padding: 20,
+    flexWrap: 'wrap',
+  },
+  titlerow: {
+    flex: 3,
+    textAlign: 'center',
+    fontSize: 24,
+  },
+  gap: {
+    height: '10%',
+  },
+  startButtonContainer: {
+    flexDirection: 'column',
+    width: '50%',
+    alignSelf: 'center',
+  },
+  title: {
+    color: colors.white,
+    fontSize: 50,
+    textAlign: 'center',
+    flex: 1,
+    alignContent: 'center',
+  },
+  titlerow: {
+    flex: 5,
+    backgroundColor: colors.background,
+    flexDirection: 'row',
+    
+  },
+  dualrow: {
+    flex: 1,
+    backgroundColor: colors.background,
+    flexDirection: 'row',
+    width: '100%',
+  },
+  bigrow: {
+    flex: 30,
+    borderRadius: 30,
+    margin: 10,
+    borderColor: '#26619c',
+    backgroundColor: '#454545',
+    borderWidth: 3,
+  },
+  box: {
+    borderRadius: 30,
+    flex: 50,
+    margin: 10,
+    padding: 5,
+    borderColor: '#26619c',
+    backgroundColor: '#454545',
+    borderWidth: 3,
+  },
+  titlebox: {
+    backgroundColor: colors.background,
+    justifyContent: 'space-around',
+    margin: 2,
+    alignContent: 'center',
+    flex: 20,
+  },
+  title1: {
+    textAlign: 'left',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#bbb',
+    flex: 1,
+
+  },
+  title2: {
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#bbb',
+  },
+  bufferrow: {
+    flex: 5,
+  },
+  button: {
+    flex: 1,
+    margin : 5,
+    height: 50,
+    alignContent: 'center',
+    alignSelf: 'center',
+  },
+});
