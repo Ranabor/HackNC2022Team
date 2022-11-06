@@ -7,38 +7,6 @@ reciept_text: str = "7806387 74925479984747 9879475"
 
 DPCI_LENGTH: int = 9
 #dpci_list: list[int] = list()
-"""
-temp_str: str = ""
-for character in reciept_text:   
-    if ord(character) >= 48 and ord(character) <= 57:
-        temp_str += character
-        if len(temp_str) == DPCI_LENGTH:
-            dpci_list.append(temp_str)
-    else:
-        temp_str = ""
-print(dpci_list)
-
-
-#Approach 2
-word_list: list[str] = list()
-temp_str: str = ""
-for character in reciept_text:
-    if character == " ":
-        word_list.append(temp_str)
-        temp_str = ""
-    else:
-        temp_str += character
-word_list.append(temp_str)
-print(word_list)
-
-
-for item in word_list:
-    if len(item) == DPCI_LENGTH and item.isnumeric():
-        dpci_list.append(item)
-
-print(dpci_list)
-#Then sort through word list to uncover DPCIs only using numerical only and 9 digit only filters
-"""
 
 def dpci_code_reader(reciept_codes: str) -> list[str]:
     """This function will turn the reciept codes into the appropriate 9 digit DPCI codes that we need to identify products."""
