@@ -16,33 +16,65 @@ class History extends Component {
   }
 
   componentDidMount() {
-    this.retrieveData();
+    this.dataSetup();
   }
 
-  retrieveData = async () => {
-    this.setState({data: await AsyncStorage.getItem('data')});
+  dataSetup = async () => {
+    await AsyncStorage.setItem('2022-11-05', JSON.stringify('$20'));
+    await AsyncStorage.setItem('2022-11-04', '$30');
+    await AsyncStorage.setItem('2022-11-03', '$40');
+    await AsyncStorage.setItem('2022-11-02', '$10');
+    await AsyncStorage.setItem('2022-11-01', '$23');
   };
 
-  retrieveData = async () => {};
+  retrieveData = async () => {
+    this.setState({data: await AsyncStorage.getItem(this.state.dateValue)});
+  };
 
   render() {
     return (
       <View>
         <Calendar
+          theme={{
+            backgroundColor: '#ffffff',
+            calendarBackground: colors.background,
+            textSectionTitleColor: colors.white,
+            textSectionTitleDisabledColor: '#d9e1e8',
+            selectedDayBackgroundColor: '#00adf5',
+            selectedDayTextColor: colors.muted,
+            todayTextColor: '#00adf5',
+            dayTextColor: colors.white,
+            textDisabledColor: '#d9e1e8',
+            dotColor: '#00adf5',
+            selectedDotColor: '#26619c',
+            arrowColor: 'orange',
+            disabledArrowColor: '#d9e1e8',
+            monthTextColor: colors.white,
+            indicatorColor: 'blue',
+            textDayFontFamily: 'monospace',
+            textMonthFontFamily: 'monospace',
+            textDayHeaderFontFamily: 'monospace',
+            textDayFontWeight: '300',
+            textMonthFontWeight: 'bold',
+            textDayHeaderFontWeight: '300',
+            textDayFontSize: 16,
+            textMonthFontSize: 16,
+            textDayHeaderFontSize: 16,
+          }}
           minDate={'2022-10-01'}
           maxDate={'2022-11-31'}
           onDayPress={day => {
-            const dateStuff = day['day'];
+            const dateStuff = day['dateString'];
             this.setState({dateValue: dateStuff});
+            this.retrieveData();
           }}
           onDayLongPress={day => {
             const dateStuff = day['dateString'];
             this.setState({dateValue: dateStuff});
+            this.retrieveData();
           }}
-          monthFormat={'MM/yyyy'}
-          onMonthChange={month => {
-            console.log('month changed', month);
-          }}
+          monthFormat={'MMMM yyyy'}
+          onMonthChange={month => {}}
           hideExtraDays={true}
           firstDay={1}
           onPressArrowLeft={subtractMonth => subtractMonth()}
@@ -50,52 +82,52 @@ class History extends Component {
           disableAllTouchEventsForDisabledDays={true}
           enableSwipeMonths={true}
         />
-        <Text>{this.state.dateValue}</Text>
+        <Text>{this.state.data}</Text>
       </View>
     );
   }
 }
 
-LocaleConfig.locales['fr'] = {
+LocaleConfig.locales['en'] = {
   monthNames: [
-    'Janvier',
-    'Février',
-    'Mars',
-    'Avril',
-    'Mai',
-    'Juin',
-    'Juillet',
-    'Août',
-    'Septembre',
-    'Octobre',
-    'Novembre',
-    'Décembre',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ],
   monthNamesShort: [
-    'Janv.',
-    'Févr.',
-    'Mars',
-    'Avril',
-    'Mai',
-    'Juin',
-    'Juil.',
-    'Août',
+    'Jan.',
+    'Feb.',
+    'Mar.',
+    'Apr.',
+    'May',
+    'June',
+    'July',
+    'Aug.',
     'Sept.',
     'Oct.',
     'Nov.',
-    'Déc.',
+    'Dec.',
   ],
   dayNames: [
-    'Dimanche',
-    'Lundi',
-    'Mardi',
-    'Mercredi',
-    'Jeudi',
-    'Vendredi',
-    'Samedi',
+    'Sunday',
+    'Monday',
+    'Tueday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
   ],
-  dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
-  today: "Aujourd'hui",
+  dayNamesShort: ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'],
+  today: 'Today',
 };
-LocaleConfig.defaultLocale = 'fr';
+LocaleConfig.defaultLocale = 'en';
 export default History;
