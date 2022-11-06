@@ -20,8 +20,9 @@ class RecogScreen extends Component {
       image: null,
       textCodes: '',
       textPrices: '',
-      showConfirm: false,
-      dictionary: '',
+      showConfirm: true,
+      dictionary: 'here',
+      updateLimit: true,
     };
   }
   componentDidMount() {
@@ -61,15 +62,42 @@ class RecogScreen extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.textCodes != '' && this.state.textPrices != '') {
-      this.setState({showConfirm: true});
-    }
+    if (this.state.updateLimit == true)
+      if (this.state.textCodes != '' && this.state.textPrices != '') {
+        this.setState({showConfirm: true});
+        this.setState({updateLimit: false});
+      }
   }
 
   getReceiptInfo = async () => {
-    this.setState({
-      dictionary: await Scanner(this.state.textCodes, this.state.textPrices),
-    });
+    function codeReader(receiptCodes) {
+      tempStr = '';
+      const dpciList = [];
+      returnValue = false;
+      for (let i = 0; i == receiptCodes.length; i++) {
+        if (i == receiptCodes.length) {
+          returnValue == true;
+        }
+        char = receiptCodes.substring(i);
+        console.log(char);
+        if (isNaN(char) == false) {
+          tempStr += char;
+          if (tempStr.length == 9) {
+            dpciList.push(tempStr);
+            tempStr = '';
+          }
+        } else {
+          tempStr = '';
+        }
+      }
+      if (returnValue == true) {
+        return dpciList;
+      }
+    }
+    const result = await codeReader('057101346086134358');
+    console.log(result);
+
+    this.setState({dictionary: result});
   };
 
   render() {
