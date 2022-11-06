@@ -1,28 +1,42 @@
-import React, {useState, useEffect} from 'react';
-import {Button, StyleSheet, Text, View, Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, {useState, useEffect, Component} from 'react';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  PermissionsAndroid,
+} from 'react-native';
+import {useNavigation, NavigationContainer} from '@react-navigation/native';
 import TextRecognition from 'react-native-text-recognition';
 import {launchImageLibrary} from 'react-native-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const RecogScreen = () => {
-  const [image, setImage] = useState(null);
-  const [text, setText] = useState(null);
-  useEffect(() => {
-    launchImageLibrary({}, setImage);
-  }, []);
+class RecogScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: '',
+      text: '',
+    };
+  }
+  componentDidMount() {
+    this.setState({text: 'Please Upload A Receipt'});
+  }
 
-  useEffect(() => {
-    (async () => {
-      if (image) {
-        const result = await TextRecognition.recognize(image.assets[0].uri);
-        setText(result);
-      } else {
-        setText('No image chosen.');
-      }
-    })();
-  }, [image]);
+  retrieve() {}
 
-  return <View>{text ? <Text>{text}</Text> : null}</View>;
-};
+  render() {
+    return (
+      <View>
+        <Button
+          title="Upload Photo"
+          onPress={() => navigation.navigate('Scanner')}
+        />
+        <Text>{this.state.text}</Text>
+      </View>
+    );
+  }
+}
 
 export default RecogScreen;

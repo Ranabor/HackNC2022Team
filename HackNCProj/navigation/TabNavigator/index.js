@@ -2,38 +2,38 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import HomeScreen from '../../app/HomeScreen';
-import RecogScreen from '../../app/RecogScreen';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import RecogScreen from '../../app/RecogScreen';
 
 const Tab = createBottomTabNavigator();
 
-// const screenOptions = (route, color) => {
-//   let iconName;
+const screenOptions = (route, color) => {
+  let iconName;
 
-//   switch (route.name) {
-//     case 'Home':
-//       iconName = 'home';
-//       break;
-//     case 'History':
-//       iconName = 'appstore-o';
-//       break;
-//     case 'Scanner':
-//       iconName = 'folder1';
-//       break;
-//     default:
-//       break;
-//   }
+  switch (route.name) {
+    case 'Home':
+      iconName = 'home';
+      break;
+    case 'History':
+      iconName = 'appstore-o';
+      break;
+    case 'Scanner':
+      iconName = 'folder1';
+      break;
+    default:
+      break;
+  }
 
-//   return <Icon name={iconName} color={color} size={24} />;
-// };
+  return <Icon name={iconName} color={color} size={24} />;
+};
 
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-    screenOptions={({ route }) => ({
-      tabBarIcon: ({ focused, color, size }) => {
-        let iconName;
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName;
 
         if (route.name === 'Home') {
           iconName = 'home';
@@ -43,10 +43,12 @@ const TabNavigator = () => {
           iconName = 'calendar-outline';
         }
 
-        // You can return any component that you like here!
-        return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
-      },
-    })}>
+          // You can return any component that you like here!
+          return (
+            <MaterialCommunityIcons name={iconName} size={size} color={color} />
+          );
+        },
+      })}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Scanner" component={RecogScreen} />
       <Tab.Screen name="History" component={HomeScreen} />

@@ -1500,6 +1500,13 @@
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"
   "version" "2.11.6"
 
+"@react-native-async-storage/async-storage@^1.17.10":
+  "integrity" "sha512-KrR021BmBLsA0TT1AAsfH16bHYy0MSbhdAeBAqpriak3GS1T2alFcdTUvn13p0ZW6FKRD6Bd3ryU2zhU/IYYJQ=="
+  "resolved" "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.17.10.tgz"
+  "version" "1.17.10"
+  dependencies:
+    "merge-options" "^3.0.4"
+
 "@react-native-community/blur@^4.3.0":
   "integrity" "sha512-d6phh39kKcbZ4IluDftiVWqfeFOgjl1AbQWzN47x+hLKQ5GvQJ6QhRvgAuDZ+xbJksrbXgNpMjVYkjsbcVehxg=="
   "resolved" "https://registry.npmjs.org/@react-native-community/blur/-/blur-4.3.0.tgz"
