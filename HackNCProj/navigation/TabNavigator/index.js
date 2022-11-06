@@ -2,30 +2,31 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import HomeScreen from '../../app/HomeScreen';
+import RecogScreen from '../../app/RecogScreen';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 
-const screenOptions = (route, color) => {
-  let iconName;
+// const screenOptions = (route, color) => {
+//   let iconName;
 
-  switch (route.name) {
-    case 'Home':
-      iconName = 'home';
-      break;
-    case 'History':
-      iconName = 'appstore-o';
-      break;
-    case 'Scanner':
-      iconName = 'folder1';
-      break;
-    default:
-      break;
-  }
+//   switch (route.name) {
+//     case 'Home':
+//       iconName = 'home';
+//       break;
+//     case 'History':
+//       iconName = 'appstore-o';
+//       break;
+//     case 'Scanner':
+//       iconName = 'folder1';
+//       break;
+//     default:
+//       break;
+//   }
 
-  return <Icon name={iconName} color={color} size={24} />;
-};
+//   return <Icon name={iconName} color={color} size={24} />;
+// };
 
 const TabNavigator = () => {
   return (
@@ -38,7 +39,7 @@ const TabNavigator = () => {
           iconName = focused
             ? 'ios-information-circle'
             : 'ios-information-circle-outline';
-        } else if (route.name === 'Settings') {
+        } else if (route.name === 'Scanner') {
           iconName = focused ? 'ios-list-box' : 'ios-list';
         }
 
@@ -47,8 +48,8 @@ const TabNavigator = () => {
       },
     })}>
       <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Scanner" component={RecogScreen} />
       <Tab.Screen name="History" component={HomeScreen} />
-      <Tab.Screen name="Scanner" component={HomeScreen} />
     </Tab.Navigator>
   );
 };

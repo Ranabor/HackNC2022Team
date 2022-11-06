@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -115,7 +114,7 @@ import {
 //   );
 // }
 
-import React from 'react';
+
 
 import RootNavigator from './navigation/RootNavigator';
 
